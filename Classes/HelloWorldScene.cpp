@@ -1,4 +1,5 @@
 #include "HelloWorldScene.h"
+#include "ListNode.h"
 
 USING_NS_CC;
 
@@ -72,6 +73,19 @@ bool HelloWorld::init()
 
     // add the sprite as a child to this layer
     this->addChild(pSprite, 0);
+    
+    int nIndex = 0;
+    
+//    while (g_testNames[nIndex]!="NULL")
+//    {
+//        g_gameData.push_back(NodeData(g_testNames[nIndex]));
+//        nIndex++;
+//    }
+//    CCLog("g_gameData size %lu",g_gameData.size());
+
+    TableViewList* pList = TableViewList::CreateTableViewList();
+    addChild(pList);
+//    pList->setPositionY(visibleSize.height/5);
     
     return true;
 }

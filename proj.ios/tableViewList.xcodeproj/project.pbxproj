@@ -16,6 +16,7 @@
 		0FC597C01D116C910085E57F /* commonPanelParts_img_bg_expand_1_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC597B71D116C910085E57F /* commonPanelParts_img_bg_expand_1_03.png */; };
 		0FC597C11D116C910085E57F /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 0FC597B81D116C910085E57F /* fonts */; };
 		0FC597C21D116C910085E57F /* militaryRank_img_cellBack_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC597B91D116C910085E57F /* militaryRank_img_cellBack_3.png */; };
+		0FC597C61D1172600085E57F /* ListNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FC597C41D1172600085E57F /* ListNode.cpp */; };
 		15A3D8FF1682F7D5002FB0C5 /* b2BroadPhase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15A3D88B1682F7D5002FB0C5 /* b2BroadPhase.cpp */; };
 		15A3D9001682F7D5002FB0C5 /* b2CollideCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15A3D88D1682F7D5002FB0C5 /* b2CollideCircle.cpp */; };
 		15A3D9011682F7D5002FB0C5 /* b2CollideEdge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15A3D88E1682F7D5002FB0C5 /* b2CollideEdge.cpp */; };
@@ -256,6 +257,8 @@
 		0FC597B71D116C910085E57F /* commonPanelParts_img_bg_expand_1_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commonPanelParts_img_bg_expand_1_03.png; sourceTree = "<group>"; };
 		0FC597B81D116C910085E57F /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		0FC597B91D116C910085E57F /* militaryRank_img_cellBack_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = militaryRank_img_cellBack_3.png; sourceTree = "<group>"; };
+		0FC597C41D1172600085E57F /* ListNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ListNode.cpp; path = ../Classes/ListNode.cpp; sourceTree = "<group>"; };
+		0FC597C51D1172600085E57F /* ListNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListNode.h; path = ../Classes/ListNode.h; sourceTree = "<group>"; };
 		15A3D87E1682F7B3002FB0C5 /* cocos2dx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2dx.xcodeproj; path = ../../../cocos2dx/proj.ios/cocos2dx.xcodeproj; sourceTree = "<group>"; };
 		15A3D8891682F7D5002FB0C5 /* Box2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Box2D.h; sourceTree = "<group>"; };
 		15A3D88B1682F7D5002FB0C5 /* b2BroadPhase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2BroadPhase.cpp; sourceTree = "<group>"; };
@@ -1197,6 +1200,8 @@
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */,
 				1AFAF8B616D35DE700DB1158 /* HelloWorldScene.h */,
+				0FC597C41D1172600085E57F /* ListNode.cpp */,
+				0FC597C51D1172600085E57F /* ListNode.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -1764,6 +1769,7 @@
 				1A8F3B78175E05DA00049216 /* CCSkeletonAnimation.cpp in Sources */,
 				1A8F3B79175E05DA00049216 /* extension.cpp in Sources */,
 				1A8F3B7A175E05DA00049216 /* Json.cpp in Sources */,
+				0FC597C61D1172600085E57F /* ListNode.cpp in Sources */,
 				1A8F3B7B175E05DA00049216 /* RegionAttachment.cpp in Sources */,
 				1A8F3B7C175E05DA00049216 /* Skeleton.cpp in Sources */,
 				1A8F3B7D175E05DA00049216 /* SkeletonData.cpp in Sources */,
@@ -1852,12 +1858,12 @@
 					"\"$(SRCROOT)/../../../cocos2dx/platform/ios/Simulation\"",
 				);
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"",
 					"\"$(SRCROOT)/../../../external/libwebsockets/ios/lib\"",
 				);
-				OTHER_CFLAGS = "-O2";
+				OTHER_CFLAGS = "";
 				PRODUCT_NAME = tableViewList;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -1900,7 +1906,7 @@
 					"\"$(SRCROOT)/../../../cocos2dx/platform/ios/Simulation\"",
 				);
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"",
 					"\"$(SRCROOT)/../../../external/libwebsockets/ios/lib\"",
