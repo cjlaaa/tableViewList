@@ -24,12 +24,32 @@ public:
         strName = sName;
         strTexture = "Icon-114.png";
         nLv = 0;
+        isShowMenu = false;
     }
     string strName;
     string strTexture;
     int nLv;
+    bool isShowMenu;
 };
 //static vector<NodeData> g_gameData;
+
+enum
+{
+    kTagTableView,
+    kTagCellBg,
+    kTagCellLabel,
+    kTagCellHead,
+    kTagCellName,
+    kTagCellMenu,
+    kTagCellSubMenu,
+};
+
+enum
+{
+    kZOrderBack,
+    kZOrderMiddle,
+    kZOrderFront,
+};
 
 class TableViewList : public CCLayer
 , public CCTableViewDataSource
@@ -49,6 +69,8 @@ protected:
     bool Init();
     void cellInit(CCTableViewCell* cell,int nIndex);
     void cellReset(CCTableViewCell* cell,int nIndex);
+    void cellExpand(CCTableViewCell* cell,int idx);
+    void setTableViewOffset(bool bIsShow);
     vector<NodeData> m_gameData;
 };
 
