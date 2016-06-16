@@ -41,6 +41,7 @@ enum
     kTagCellHead,
     kTagCellName,
     kTagCellMenu,
+    kTagCellSubMenuBg,
     kTagCellSubMenu,
 };
 
@@ -65,6 +66,7 @@ public:
     virtual cocos2d::extension::CCTableViewCell* tableCellAtIndex(cocos2d::extension::CCTableView *table, unsigned int idx);
     virtual unsigned int numberOfCellsInTableView(cocos2d::extension::CCTableView *table);
     void tableViewSubBtnCallback(CCObject* pSender);
+    void tableViewSubMenuBtnCallback(CCObject* pSender);
 protected:
     bool Init();
     void cellInit(CCTableViewCell* cell,int nIndex);

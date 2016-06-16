@@ -95,24 +95,20 @@ void TableViewList::tableViewSubBtnCallback(CCObject* pSender)
     CCTableViewCell *cell = (CCTableViewCell*)(((CCMenuItemImage*)pSender)->getParent()->getParent());
 //    CCLog("tableViewSubBtnCallback,%d",cell->getIdx());
     CCSprite *pBg = (CCLabelTTF*)cell->getChildByTag(kTagCellBg);
-    CCSprite* pSubMenu = dynamic_cast<CCSprite*>(pBg->getChildByTag(kTagCellSubMenu));
-    pSubMenu->stopAllActions();
+    CCSprite* pSubMenuBg = dynamic_cast<CCSprite*>(pBg->getChildByTag(kTagCellSubMenuBg));
+    pSubMenuBg->stopAllActions();
     
     if(m_gameData[cell->getIdx()].isShowMenu)
     {
-//        pSubMenu->setPositionY(pSubMenu->getPositionY()-25);
-        pSubMenu->setVisible(true);
+        pSubMenuBg->setVisible(true);
         m_gameData[cell->getIdx()].isShowMenu = false;
         setTableViewOffset(false);
-//        pSubMenu->runAction(CCMoveTo::create(1.5, ccp(pSubMenu->getPositionX(),pSubMenu->getPositionY()+25)));
     }
     else
     {
-//        pSubMenu->setPositionY(pSubMenu->getPositionY()+25);
-        pSubMenu->setVisible(false);
+        pSubMenuBg->setVisible(false);
         m_gameData[cell->getIdx()].isShowMenu = true;
         setTableViewOffset(true);
-//        pSubMenu->runAction(CCMoveTo::create(1.5, ccp(pSubMenu->getPositionX(),pSubMenu->getPositionY()-25)));
     }
 }
 
@@ -180,33 +176,46 @@ void TableViewList::cellInit(CCTableViewCell* cell,int idx)
     pMenu->setPosition(CCPointZero);
     cell->addChild(pMenu,kZOrderMiddle,kTagCellMenu);
     
-    CCSprite* pSubMenu = CCSprite::create("commonPanelParts_img_bg_expand_1_03.png");
-    pBg->addChild(pSubMenu,kZOrderBack-1,kTagCellSubMenu);
-    pSubMenu->setPositionX(pBg->getContentSize().width/2);
-    pSubMenu->setPositionY(pSubMenu->getPositionY()-25);
+    CCSprite* pSubMenuBg = CCSprite::create("commonPanelParts_img_bg_expand_1_03.png");
+    pBg->addChild(pSubMenuBg,kZOrderBack-1,kTagCellSubMenuBg);
+    pSubMenuBg->setPositionX(pBg->getContentSize().width/2);
+    pSubMenuBg->setPositionY(pSubMenuBg->getPositionY()-25);
+    
+    CCMenuItemImage *pSubBtn = CCMenuItemImage::create("common_btn_red_1.png","common_btn_red_0.png",this,
+                                                    menu_selector(TableViewList::tableViewSubMenuBtnCallback));
+    CCMenu* pSubMenu = CCMenu::create(pSubBtn, NULL);
+    pSubBtn->setPosition(pSubMenuBg->getContentSize().width/2,pSubMenuBg->getContentSize().height/3);
+    pSubMenu->setPosition(CCPointZero);
+    pSubMenuBg->addChild(pSubMenu,kZOrderMiddle,kTagCellSubMenu);
     
     cell->setTag(idx);
     
     cellExpand(cell,idx);
 }
 
+void TableViewList::tableViewSubMenuBtnCallback(CCObject* pSender)
+{
+    CCTableViewCell *cell = (CCTableViewCell*)(((CCMenuItemImage*)pSender)->getParent()->getParent())->getParent()->getParent();
+    CCLog("tableViewSubMenuBtnCallback,%d",cell->getIdx());
+}
+
 void TableViewList::cellExpand(CCTableViewCell* cell,int idx)
 {
     CCSprite* pBg = dynamic_cast<CCSprite*>(cell->getChildByTag(kTagCellBg));
     CCMenu* pBtn = dynamic_cast<CCMenu*>(cell->getChildByTag(kTagCellMenu));
-    CCSprite* pSubMenu = dynamic_cast<CCSprite*>(pBg->getChildByTag(kTagCellSubMenu));
+    CCSprite* pSubMenuBg = dynamic_cast<CCSprite*>(pBg->getChildByTag(kTagCellSubMenuBg));
     
     if(m_gameData[idx].isShowMenu)
     {
         pBg->setPositionY(pBg->getContentSize().height/2+SUB_MENU_MOVEMENT);
         if(pBtn!=NULL)pBtn->setPositionY(SUB_MENU_MOVEMENT);
-        pSubMenu->setVisible(true);
+        pSubMenuBg->setVisible(true);
     }
     else
     {
         pBg->setPosition(ccp(pBg->getContentSize().width/2, pBg->getContentSize().height/2));
         if(pBtn!=NULL)pBtn->setPositionY(0);
-        pSubMenu->setVisible(false);
+        pSubMenuBg->setVisible(false);
     }
 }
 
