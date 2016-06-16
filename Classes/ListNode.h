@@ -31,14 +31,6 @@ public:
 };
 //static vector<NodeData> g_gameData;
 
-class ListNode : public CCLayer
-{
-public:
-    static ListNode* CreateListNode();
-protected:
-    bool Init();
-};
-
 class TableViewList : public CCLayer
 , public CCTableViewDataSource
 , public CCTableViewDelegate
@@ -55,7 +47,9 @@ public:
     void tableViewSubBtnCallback(CCObject* pSender);
 protected:
     bool Init();
-    vector<NodeData> g_gameData;
+    void cellInit(CCTableViewCell* cell,int nIndex);
+    void cellReset(CCTableViewCell* cell,int nIndex);
+    vector<NodeData> m_gameData;
 };
 
 const std::string g_testNames[] = {
